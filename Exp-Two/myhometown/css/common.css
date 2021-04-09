@@ -1,0 +1,77 @@
+/*=======公共样式========*/
+
+/*所有元素的margin,padding设为0*/
+*{
+	margin: 0;
+	padding: 0;
+}
+
+/*字体名称"Microsoft YaHei",大小,颜色*/
+body{
+	background-color: #294550;
+	font-family:"Microsoft YaHei";
+	font-size: 13px;
+	color:white;
+}
+
+/*li样式:无黑点*/
+li{
+	list-style: none;
+}
+
+/*链接默认样式：字体 颜色，去下划线*/
+a{
+	color: white;
+	text-decoration: none;
+}
+
+
+
+/*=======布局相关========*/
+/*所有元素的定位:相对*/
+*{
+	position: relative;
+}
+
+/*清除浮动*/
+.clearfix:after{
+	content: '';
+	display: block;
+	clear: both;
+    visibility: hidden;
+}
+
+
+/*左浮*/
+.fl{
+	float: left;
+}
+
+
+/*右浮*/
+.fr{
+	float: right;
+}
+
+img{
+	display: block;
+}
+
+.text{
+	margin: 50px;
+	background-color: #FFFFFF;
+	opacity: 0.5;
+	border-radius: 25px;
+	color: #000000;
+	padding:20px 100px ;
+	
+}
+.text div{
+	padding-top:20px ;
+	padding-bottom:20px ;
+	font-size: 20px;
+	line-height: 40px;
+}
+.text h3{
+	
+}

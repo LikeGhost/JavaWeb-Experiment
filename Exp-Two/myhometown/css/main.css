@@ -1,0 +1,66 @@
+.head{
+	margin:0px auto;
+	width: 1024px;
+}
+.head .mainpic{
+	width: 1024px;
+	margin: 0px auto;
+	float: left;
+	opacity:0.7;
+}
+.sign{
+	position: absolute;
+	left: 50px;
+	top: 50px;
+	width: 100px;
+	height: 100px;
+}
+
+.tag{
+	margin: 0px auto;
+	width: 1200px;
+	background-color: #D2AFA9;
+	border-radius: 10px;
+}
+.tag ul{
+	width:300px;
+	margin: 0px auto;
+}
+.tag li:hover{
+	background-color: #294550;
+}
+.tag ul li{
+
+	float: left;
+	padding: 0px 10px;
+	height: 30px;
+	line-height: 30px;
+	font-size: 16px;
+	
+
+}
+.tag .line{
+	padding: 0px;
+	margin: 7.5px 0px;
+	height: 15px;
+	
+	border-right: solid 1px;
+}
+.main{
+	margin:0px auto;
+	width: 1500px;
+}
+.mainFrame{
+
+	width: 1500px;
+	height:2500px;
+}
+#clock{
+	position: absolute;
+	font-size:30px ;
+	right: 100px;
+	top :100px;
+}
+.nav{
+	
+}
