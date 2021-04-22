@@ -1,4 +1,4 @@
-<%--
+<%@ page import="java.awt.desktop.AppForegroundListener" %><%--
   Created by IntelliJ IDEA.
   User: 11540
   Date: 2021/4/22
@@ -12,8 +12,11 @@
 </head>
 <body>
 <%
+
     if (session.getAttribute("flag")!=null) {
         out.print("这里是首页。");
+        out.print("网站登陆总人数："+application.getAttribute("count"));
+
 %>
 <a href="logout.jsp">注销</a>
 <% }

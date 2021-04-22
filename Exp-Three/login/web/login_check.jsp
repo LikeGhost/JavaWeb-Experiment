@@ -35,7 +35,15 @@ if(request.getParameter("userId")!=null&&request.getParameter("userPassword")!=n
             if (resultSet.next()) {
                 out.print("<div>" + resultSet.getString(2) + "，欢迎登录</div>");
                 session.setAttribute("flag","ok");
+                if(application.getAttribute("count")==null)
+                    application.setAttribute("count","0");
+                String count=(String) application.getAttribute("count");
+                int cnt= Integer.parseInt(count)+1;
+                application.setAttribute("count",Integer.toString(cnt));
+
                 response.setHeader("refresh", "2;URL=main.jsp");
+
+
             }
             else {
 %>
