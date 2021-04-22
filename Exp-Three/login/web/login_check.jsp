@@ -56,7 +56,6 @@ else{
                 }
 
 %>
-<div>asdasd</div>
 
 </body>
 </html>
