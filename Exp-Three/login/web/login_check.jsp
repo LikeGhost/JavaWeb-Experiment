@@ -23,7 +23,7 @@ if(request.getParameter("userId")!=null&&request.getParameter("userPassword")!=n
             Class.forName("com.mysql.jdbc.Driver");
             String url = "jdbc:mysql://localhost:3306/test?serverTimezone=Asia/Shanghai";
             String user = "root";
-            String password = "_LikeGhost957";
+            String password = "123456";
             String userId = request.getParameter("userId");
             String userPassword = request.getParameter("userPassword");
             Connection connection = DriverManager.getConnection(url, user, password);
