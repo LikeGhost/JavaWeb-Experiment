@@ -1,6 +1,6 @@
 package com.servlet;
 
-import com.factory.PersonDAOFactory;
+import com.factory.DAOFactory;
 import com.vo.Person;
 
 import javax.servlet.ServletException;
@@ -15,16 +15,23 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
+        String urlPath=req.getContextPath();
         Person loginPerson=new Person();
         loginPerson.setId( req.getParameter("id"));
         loginPerson.setPassword(req.getParameter("password"));
-        Person person=PersonDAOFactory.getPersonDAOInstance().login(loginPerson);
+        Person person= DAOFactory.getPersonDAOInstance().login(loginPerson);
         if(person!=null){
-            System.out.println("登陆成功"+person.getName());
+            req.getSession().setAttribute("person",person);
+            req.getRequestDispatcher("main.jsp").forward(req,resp);
         }
         else{
-            System.out.println("登陆失败");
+            req.getSession().setAttribute("loginError","true");
+            resp.sendRedirect(urlPath+"/login.jsp");
         }
     }
 
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        this.doPost(req, resp);
+    }
 }
