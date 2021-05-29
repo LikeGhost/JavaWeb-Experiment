@@ -14,7 +14,7 @@ public class PersonDAOImpl implements PersonDAO {
     public Person login(Person loginPerson) {
         String sql="select * from person where id=? and password=?";
         JdbcTemplate jt=new JdbcTemplate(ConnectionManager.getDataSource());
-        List<Person>list=jt.query(sql,new BeanPropertyRowMapper<Person>(Person.class),loginPerson.getId(),loginPerson.getPassword());
+        List<Person>list=jt.query(sql, new BeanPropertyRowMapper<>(Person.class),loginPerson.getId(),loginPerson.getPassword());
 
         if(list.size()!=0){
            return list.get(0);

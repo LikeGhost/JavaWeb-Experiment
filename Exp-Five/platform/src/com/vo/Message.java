@@ -1,5 +1,6 @@
 package com.vo;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Message {
@@ -7,7 +8,7 @@ public class Message {
     private String title;
     private String content;
     private String writer;
-    private Date writerDate;
+    private Date writeDate;
 
     public Integer getMessageId() {
         return messageId;
@@ -41,12 +42,12 @@ public class Message {
         this.writer = writer;
     }
 
-    public Date getWriterDate() {
-        return writerDate;
+    public Date getWriteDate() {
+        return writeDate;
     }
 
-    public void setWriterDate(Date writerDate) {
-        this.writerDate = writerDate;
+    public void setWriteDate(Date writeDate) {
+        this.writeDate = writeDate;
     }
 
     @Override
@@ -56,7 +57,7 @@ public class Message {
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 ", writer='" + writer + '\'' +
-                ", writerDate=" + writerDate +
+                ", writeDate=" + writeDate +
                 '}';
     }
 }

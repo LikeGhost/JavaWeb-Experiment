@@ -5,7 +5,7 @@ public class Revert {
     private Integer messageId;
     private String content;
     private String writer;
-    private String writerDate;
+    private String writeDate;
 
     public Integer getRevertId() {
         return revertId;
@@ -39,12 +39,12 @@ public class Revert {
         this.writer = writer;
     }
 
-    public String getWriterDate() {
-        return writerDate;
+    public String getWriteDate() {
+        return writeDate;
     }
 
-    public void setWriterDate(String writerDate) {
-        this.writerDate = writerDate;
+    public void setWriteDate(String writeDate) {
+        this.writeDate = writeDate;
     }
 
     @Override
@@ -54,7 +54,7 @@ public class Revert {
                 ", messageId=" + messageId +
                 ", content='" + content + '\'' +
                 ", writer='" + writer + '\'' +
-                ", writerDate='" + writerDate + '\'' +
+                ", writerDate='" + writeDate + '\'' +
                 '}';
     }
 }
