@@ -13,6 +13,7 @@
 </head>
 <body>
 <h1>欢迎登陆，${person.getName()}</h1>
+<a href="messageServlet?status=logout">注销</a>
 <hr>
 <a href="insertMessage.jsp">添加新帖子</a>
 <table border="1" cellspacing="0">
@@ -22,7 +23,7 @@
         <th>标题</th>
         <th>内容</th>
         <th>作者</th>
-        <th>最后修改时间</th>
+        <th>发布时间</th>
         <th>删除</th>
     </tr>
     </thead>

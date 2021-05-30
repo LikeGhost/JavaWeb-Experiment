@@ -22,7 +22,6 @@ public class LoginServlet extends HttpServlet {
         loginPerson.setId( req.getParameter("id"));
         loginPerson.setPassword(req.getParameter("password"));
 
-        System.out.println(loginPerson);
         //使用BeanUtils工具直接封装数据
 //        Map<String, String[]> map = req.getParameterMap();
 //        try {

@@ -13,6 +13,7 @@
 </head>
 <body>
 <h1>欢迎登陆，${person.getName()}</h1>
+<a href="messageServlet?status=logout">注销</a>
 <hr>
 <a href="insertMessage.jsp">添加新帖子</a>
 <table border="1" cellspacing="0">

@@ -40,6 +40,10 @@ public class MessageServlet extends HttpServlet {
                 DAOFactory.getMessageDAOInstance().deleteMessage(deleteMessage);
                 response.setHeader("refresh", "0;URL=messageServlet?status=selectAll");
                 break;
+            case "logout":
+                request.getSession().removeAttribute("person");
+                response.setHeader("refresh","0;URL=login.jsp");
+                break;
 
         }
     }
