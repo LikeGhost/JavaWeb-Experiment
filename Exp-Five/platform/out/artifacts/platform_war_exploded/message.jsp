@@ -23,7 +23,7 @@
         <th>标题</th>
         <th>内容</th>
         <th>作者</th>
-        <th>最后修改时间</th>
+        <th>发布时间</th>
         <th>删除</th>
     </tr>
     </thead>
