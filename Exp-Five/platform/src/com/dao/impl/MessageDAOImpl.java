@@ -4,6 +4,7 @@ import com.dao.MessageDAO;
 import com.db.ConnectionManager;
 import com.factory.DAOFactory;
 import com.vo.Message;
+import com.vo.Revert;
 import org.junit.Test;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -20,12 +21,21 @@ public class MessageDAOImpl implements MessageDAO {
 
     @Override
     public Boolean deleteMessage(Message message) {
-        return null;
+        String sql="delete from message where messageId=?";
+        JdbcTemplate jt = new JdbcTemplate(ConnectionManager.getDataSource());
+        Revert revert = new Revert();
+        revert.setMessageId(message.getMessageId());
+        DAOFactory.getRevertDAOFactory().deleteRevert(revert);
+        return jt.update(sql,message.getMessageId())==1;
+
     }
 
     @Override
     public Message searchMessage(Message message) {
-        return null;
+        String sql="select * from message where messageId=?";
+        JdbcTemplate jt = new JdbcTemplate(ConnectionManager.getDataSource());
+        return jt.queryForObject(sql,new BeanPropertyRowMapper<>(Message.class),message.getMessageId());
+
     }
 
     @Override
@@ -38,9 +48,12 @@ public class MessageDAOImpl implements MessageDAO {
 
     @Test
     public void test(){
-       List<Message>list=getAllMessage();
-        for (Message message : list) {
-            System.out.println(message);
-        }
+//       List<Message>list=getAllMessage();
+//        for (Message message : list) {
+//            System.out.println(message);
+//        }
+        Message message = new Message();
+        message.setMessageId(10);
+        System.out.println(deleteMessage(message));
     }
 }

@@ -3,6 +3,7 @@ package com.servlet;
 import com.factory.DAOFactory;
 import com.vo.Message;
 import com.vo.Person;
+import com.vo.Revert;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,33 +14,49 @@ import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @WebServlet("/messageServlet")
 public class MessageServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
-        String status=request.getParameter("status");
-        String forward="error.jsp";
-        if(status.equals("insertMessage")){
+        String status = request.getParameter("status");
+        String forward = "error.jsp";
 
-            Message newMessage=new Message();
-            newMessage.setTitle(request.getParameter("title"));
-            newMessage.setContent(request.getParameter("content"));
-            newMessage.setWriter(((Person)request.getSession().getAttribute("person")).getName());
-//            SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            newMessage.setWriteDate(new Date());
-            System.out.println(DAOFactory.getMessageDAOInstance().insertMessage(newMessage));
-            System.out.println(newMessage);
-            forward="message.jsp";
+        switch (status) {
+            case "insertMessage":
+                Message newMessage = new Message();
+                newMessage.setTitle(request.getParameter("title"));
+                newMessage.setContent(request.getParameter("content"));
+                newMessage.setWriter(((Person) request.getSession().getAttribute("person")).getName());
+//              SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                newMessage.setWriteDate(new Date());
+                DAOFactory.getMessageDAOInstance().insertMessage(newMessage);
+                response.setHeader("refresh", "0;URL=messageServlet?status=selectAll");
+                break;
+            case "selectAll":
+                request.getSession().setAttribute("allMessage", DAOFactory.getMessageDAOInstance().getAllMessage());
+                request.getRequestDispatcher("message.jsp").forward(request, response);
+                break;
+            case "deleteMessage":
+                Message deleteMessage = new Message();
+                deleteMessage.setMessageId(Integer.parseInt(request.getParameter("messageId")));
+                DAOFactory.getMessageDAOInstance().deleteMessage(deleteMessage);
+                response.setHeader("refresh", "0;URL=messageServlet?status=selectAll");
+                break;
+            case "revert":
+                Message searchMessage = new Message();
+                searchMessage.setMessageId(Integer.parseInt(request.getParameter("messageId")));
+                searchMessage=DAOFactory.getMessageDAOInstance().searchMessage(searchMessage);
+                List<Revert> list=DAOFactory.getRevertDAOFactory().getAllRevert(searchMessage);
+                request.getSession().setAttribute("message",searchMessage);
+                request.getSession().setAttribute("allRevert",list);
+                response.setHeader("refresh","0;URL=revert.jsp");
+                break;
         }
-        else if(status.equals("selectAll")){
-            System.out.println(request.getSession().getAttribute("person"));
-           forward="message.jsp";
-        }
-        request.getRequestDispatcher(forward).forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request,response);
+        doPost(request, response);
     }
 }

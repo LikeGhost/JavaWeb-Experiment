@@ -15,7 +15,6 @@
 <h1>欢迎登陆，${person.getName()}</h1>
 <hr>
 <a href="insertMessage.jsp">添加新帖子</a>
-<hr>
 <table border="1" cellspacing="0">
     <thead>
     <tr>
@@ -28,16 +27,16 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach var="message" items="${allMessage}">
+    <c:forEach var="revert" items="${allMessage}">
         <tr>
-            <td>${message.getMessageId()}</td>
-            <td>${message.getTitle()}</td>
-            <td>${message.getContent()}</td>
-            <td>${message.getWriter()}</td>
-            <td>${message.getWriteDate()}</td>
+            <td>${revert.getMessageId()}</td>
+            <td><a href="messageServlet?status=revert&messageId=${revert.getMessageId()}">${revert.getTitle()}</a></td>
+            <td>${revert.getContent()}</td>
+            <td>${revert.getWriter()}</td>
+            <td>${revert.getWriteDate()}</td>
             <td>
-                <c:if test="${person.getName()==message.getWriter()}">
-                    <a href="controlServlet?status=deleteMessage&messageId=${message.getMessageId()}">删除</a>
+                <c:if test="${person.getName()==revert.getWriter()}">
+                    <a href="messageServlet?status=deleteMessage&messageId=${revert.getMessageId()}">删除</a>
                 </c:if>
             </td>
         </tr>

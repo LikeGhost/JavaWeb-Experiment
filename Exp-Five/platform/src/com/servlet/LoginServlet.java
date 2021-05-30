@@ -22,26 +22,27 @@ public class LoginServlet extends HttpServlet {
         String urlPath=req.getContextPath();
         Person loginPerson=new Person();
 
-//
-//        loginPerson.setId( req.getParameter("id"));
-//        loginPerson.setPassword(req.getParameter("password"));
 
+        loginPerson.setId( req.getParameter("id"));
+        loginPerson.setPassword(req.getParameter("password"));
+
+        System.out.println(loginPerson);
         //使用BeanUtils工具直接封装数据
-        Map<String, String[]> map = req.getParameterMap();
-        try {
-            BeanUtils.populate(loginPerson, map);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        }
+//        Map<String, String[]> map = req.getParameterMap();
+//        try {
+//            BeanUtils.populate(loginPerson, map);
+//        } catch (IllegalAccessException e) {
+//            e.printStackTrace();
+//        } catch (InvocationTargetException e) {
+//            e.printStackTrace();
+//        }
         System.out.println(loginPerson);
 
         Person person= DAOFactory.getPersonDAOInstance().login(loginPerson);
         if(person!=null){
             req.getSession().setAttribute("person",person);
-            req.getSession().setAttribute("allMessage",DAOFactory.getMessageDAOInstance().getAllMessage());
-            req.getRequestDispatcher("message.jsp").forward(req,resp);
+//            req.getSession().setAttribute("allMessage",DAOFactory.getMessageDAOInstance().getAllMessage());
+            req.getRequestDispatcher("/messageServlet?status=selectAll").forward(req,resp);
         }
         else{
             req.getSession().setAttribute("loginError","true");

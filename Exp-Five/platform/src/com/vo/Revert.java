@@ -1,11 +1,13 @@
 package com.vo;
 
+import java.util.Date;
+
 public class Revert {
     private Integer revertId;
     private Integer messageId;
     private String content;
     private String writer;
-    private String writeDate;
+    private Date writeDate;
 
     public Integer getRevertId() {
         return revertId;
@@ -39,11 +41,11 @@ public class Revert {
         this.writer = writer;
     }
 
-    public String getWriteDate() {
+    public Date getWriteDate() {
         return writeDate;
     }
 
-    public void setWriteDate(String writeDate) {
+    public void setWriteDate(Date writeDate) {
         this.writeDate = writeDate;
     }
 
