@@ -3,7 +3,6 @@ package com.servlet;
 import com.factory.DAOFactory;
 import com.vo.Message;
 import com.vo.Person;
-import com.vo.Revert;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,10 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 @WebServlet("/messageServlet")
 public class MessageServlet extends HttpServlet {
@@ -44,15 +40,7 @@ public class MessageServlet extends HttpServlet {
                 DAOFactory.getMessageDAOInstance().deleteMessage(deleteMessage);
                 response.setHeader("refresh", "0;URL=messageServlet?status=selectAll");
                 break;
-            case "revert":
-                Message searchMessage = new Message();
-                searchMessage.setMessageId(Integer.parseInt(request.getParameter("messageId")));
-                searchMessage=DAOFactory.getMessageDAOInstance().searchMessage(searchMessage);
-                List<Revert> list=DAOFactory.getRevertDAOFactory().getAllRevert(searchMessage);
-                request.getSession().setAttribute("message",searchMessage);
-                request.getSession().setAttribute("allRevert",list);
-                response.setHeader("refresh","0;URL=revert.jsp");
-                break;
+
         }
     }
 

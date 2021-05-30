@@ -30,7 +30,7 @@
     <c:forEach var="revert" items="${allMessage}">
         <tr>
             <td>${revert.getMessageId()}</td>
-            <td><a href="messageServlet?status=revert&messageId=${revert.getMessageId()}">${revert.getTitle()}</a></td>
+            <td><a href="revertServlet?status=showRevert&messageId=${revert.getMessageId()}">${revert.getTitle()}</a></td>
             <td>${revert.getContent()}</td>
             <td>${revert.getWriter()}</td>
             <td>${revert.getWriteDate()}</td>

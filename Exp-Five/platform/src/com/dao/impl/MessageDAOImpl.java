@@ -43,7 +43,7 @@ public class MessageDAOImpl implements MessageDAO {
         String sql="select * from Message";
         JdbcTemplate jt=new JdbcTemplate(ConnectionManager.getDataSource());
 //        jt.queryForObject()
-        return jt.query(sql, new BeanPropertyRowMapper<Message>(Message.class));
+        return jt.query(sql, new BeanPropertyRowMapper<>(Message.class));
     }
 
     @Test

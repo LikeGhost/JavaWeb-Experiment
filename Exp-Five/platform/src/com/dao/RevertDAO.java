@@ -6,7 +6,7 @@ import com.vo.Revert;
 import java.util.List;
 
 public interface RevertDAO {
-    public List<Revert> getAllRevert(Message message);
-    public Boolean insertRevert(Revert revert);
-    public Boolean deleteRevert(Revert revert);
+    List<Revert> getAllRevert(Message message);
+    Boolean insertRevert(Revert revert);
+    Boolean deleteRevert(Revert revert);
 }

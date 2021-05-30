@@ -4,10 +4,8 @@ import com.alibaba.druid.pool.DruidDataSourceFactory;
 import org.junit.Test;
 
 import javax.sql.DataSource;
-import java.lang.reflect.Field;
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Properties;
 
 public class ConnectionManager {
@@ -56,88 +54,90 @@ public class ConnectionManager {
         return conn;
 
     }
-    public static void close(Connection conn, PreparedStatement ps){
-        close(conn,ps,null);
-
-    }
-    public static void close(Connection conn, PreparedStatement ps, ResultSet rs){
-        if(rs!=null) {
-            try {
-                rs.close();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-        }
-        if(ps!=null){
-            try {
-                ps.close();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-        }
-        if(conn!=null) {
-            try {
-                conn.close();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-        }
-
-    }
     public static DataSource getDataSource(){
         return ds;
     }
-    public static<T> List<T> query(Class<T> clazz, String sql, Object ... args){
-        Connection connection=getConnection();
-        PreparedStatement preparedStatement=null;
-        ResultSet resultSet=null;
-        ArrayList<T> list=null;
-        try {
-            preparedStatement = connection.prepareStatement(sql);
-            for (int i = 0; i < args.length; i++) {
-                preparedStatement.setObject(i + 1, args[i]);
-            }
-            resultSet=preparedStatement.executeQuery();
+    //以下为类JDBCTemplate的封装，因使用JDBCTemplate所以不再使用
+//    public static void close(Connection conn, PreparedStatement ps){
+//        close(conn,ps,null);
+//
+//    }
+//    public static void close(Connection conn, PreparedStatement ps, ResultSet rs){
+//        if(rs!=null) {
+//            try {
+//                rs.close();
+//            } catch (SQLException throwables) {
+//                throwables.printStackTrace();
+//            }
+//        }
+//        if(ps!=null){
+//            try {
+//                ps.close();
+//            } catch (SQLException throwables) {
+//                throwables.printStackTrace();
+//            }
+//        }
+//        if(conn!=null) {
+//            try {
+//                conn.close();
+//            } catch (SQLException throwables) {
+//                throwables.printStackTrace();
+//            }
+//        }
+//
+//    }
 
-            ResultSetMetaData rsmd=resultSet.getMetaData();
-            int colCount=rsmd.getColumnCount();
-            list=new ArrayList<>();
-            while(resultSet.next()){
-                T t=clazz.newInstance();
-                for (int i = 0; i < colCount; i++) {
-                    Object colValue=resultSet.getObject(i+1);
-                    String colLabel=rsmd.getColumnLabel(i+1);
-                    Field field=clazz.getDeclaredField(colLabel);
-                    field.setAccessible(true);
-                    field.set(t,colValue);
-                }
-                list.add(t);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        finally {
-            close(connection,preparedStatement,resultSet);
-
-        }
-        return list;
-
-    }
-    public static void update(String sql,Object ...args) {
-        Connection connection = getConnection();
-        PreparedStatement preparedStatement=null;
-        try {
-            preparedStatement = connection.prepareStatement(sql);
-            for (int i = 0; i < args.length; i++) {
-                preparedStatement.setObject(i + 1, args[i]);
-            }
-            preparedStatement.execute();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            close(connection, preparedStatement, null);
-        }
-    }
+//    public static<T> List<T> query(Class<T> clazz, String sql, Object ... args){
+//        Connection connection=getConnection();
+//        PreparedStatement preparedStatement=null;
+//        ResultSet resultSet=null;
+//        ArrayList<T> list=null;
+//        try {
+//            preparedStatement = connection.prepareStatement(sql);
+//            for (int i = 0; i < args.length; i++) {
+//                preparedStatement.setObject(i + 1, args[i]);
+//            }
+//            resultSet=preparedStatement.executeQuery();
+//
+//            ResultSetMetaData rsmd=resultSet.getMetaData();
+//            int colCount=rsmd.getColumnCount();
+//            list=new ArrayList<>();
+//            while(resultSet.next()){
+//                T t=clazz.newInstance();
+//                for (int i = 0; i < colCount; i++) {
+//                    Object colValue=resultSet.getObject(i+1);
+//                    String colLabel=rsmd.getColumnLabel(i+1);
+//                    Field field=clazz.getDeclaredField(colLabel);
+//                    field.setAccessible(true);
+//                    field.set(t,colValue);
+//                }
+//                list.add(t);
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        finally {
+//            close(connection,preparedStatement,resultSet);
+//
+//        }
+//        return list;
+//
+//    }
+//    public static void update(String sql,Object ...args) {
+//        Connection connection = getConnection();
+//        PreparedStatement preparedStatement=null;
+//        try {
+//            preparedStatement = connection.prepareStatement(sql);
+//            for (int i = 0; i < args.length; i++) {
+//                preparedStatement.setObject(i + 1, args[i]);
+//            }
+//            preparedStatement.execute();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        } finally {
+//            close(connection, preparedStatement, null);
+//        }
+//    }
     @Test
     public void test(){
         Connection conn=getConnection();

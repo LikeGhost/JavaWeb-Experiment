@@ -2,8 +2,6 @@ package com.servlet;
 
 import com.factory.DAOFactory;
 import com.vo.Person;
-import org.apache.commons.beanutils.BeanUtils;
-
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,8 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.util.Map;
 
 @WebServlet("/loginServlet")
 public class LoginServlet extends HttpServlet {
@@ -42,7 +38,8 @@ public class LoginServlet extends HttpServlet {
         if(person!=null){
             req.getSession().setAttribute("person",person);
 //            req.getSession().setAttribute("allMessage",DAOFactory.getMessageDAOInstance().getAllMessage());
-            req.getRequestDispatcher("/messageServlet?status=selectAll").forward(req,resp);
+//            req.getRequestDispatcher("/messageServlet?status=selectAll").forward(req,resp);
+            resp.setHeader("refresh","0;URL=/platform/messageServlet?status=selectAll");
         }
         else{
             req.getSession().setAttribute("loginError","true");
