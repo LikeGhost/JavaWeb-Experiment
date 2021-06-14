@@ -33,7 +33,7 @@ if(request.getParameter("userId")!=null&&request.getParameter("userPassword")!=n
             preparedStatement.setString(2, userPassword);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                out.print("<div>" + resultSet.getString(2) + "，欢迎登录</div>");
+                out.print("<div>" + resultSet.getString(3) + "，欢迎登录</div>");
                 session.setAttribute("flag","ok");
                 if(application.getAttribute("count")==null)
                     application.setAttribute("count","0");
