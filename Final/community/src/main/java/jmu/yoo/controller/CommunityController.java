@@ -2,6 +2,7 @@ package jmu.yoo.controller;
 
 import jmu.yoo.service.CommunityService;
 import jmu.yoo.vo.Community;
+import org.junit.runner.Request;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -30,8 +31,35 @@ public class CommunityController {
 
     @RequestMapping("/addCommunity.do")
     public ModelAndView addCommunity(Community community){
-        ModelAndView mv=new ModelAndView("redirect:/");
+        ModelAndView mv=new ModelAndView();
         service.addCommunity(community);
+        mv.setViewName("redirect:/community/showAllCommunity.do");
+        return mv;
+    }
+
+    @RequestMapping("/changeCommunity.do")
+    public ModelAndView changeCommunity(Community community){
+        ModelAndView mv=new ModelAndView();
+        service.changeCommunity(community);
+        mv.setViewName("showAllCommunity");
+        return mv;
+
+    }
+
+    @RequestMapping("findCommunity.do")
+    public ModelAndView findCommunity(Integer cId){
+        ModelAndView mv=new ModelAndView();
+        mv.addObject("community",service.findCommunityBycId(cId));
+        mv.setViewName("changeCommunity");
+        return mv;
+    }
+    @RequestMapping("deleteCommunity.do")
+    public ModelAndView deleteCommunity(Integer cId){
+        ModelAndView mv=new ModelAndView();
+        Community community=new Community();
+        community.setcId(cId);
+        service.deleteCommunity(community);
+        mv.setViewName("redirect:/community/showAllCommunity.do");
         return mv;
     }
 }

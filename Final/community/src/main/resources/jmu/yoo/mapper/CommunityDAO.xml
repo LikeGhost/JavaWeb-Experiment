@@ -10,4 +10,14 @@
     <insert id="insertCommunity" parameterType="jmu.yoo.vo.Community">
         insert into community(cName,cProvince,cCity,cStreet,cTel)values(#{cName},#{cProvince},#{cCity},#{cStreet},#{cTel});
     </insert>
+
+    <select id="selectCommunityBycId" parameterType="java.lang.Integer" resultType="jmu.yoo.vo.Community">
+        select cId,cName,cProvince,cCity,cStreet,cTel from community where cId=#{cId};
+    </select>
+    <update id="updateCommunity" parameterType="jmu.yoo.vo.Community">
+        update community set cName=#{cName},cProvince=#{cProvince},cCity=#{cCity},cStreet=#{cStreet},cTel=#{cTel} where cId=#{cId}
+    </update>
+    <delete id="deleteCommunity" parameterType="jmu.yoo.vo.Community">
+        delete from community where cId=#{cId};
+    </delete>
 </mapper>

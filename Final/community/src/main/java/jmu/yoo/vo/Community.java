@@ -7,7 +7,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Community {
-    private int id;
+    private int cId;
     private String cName;
     private String cProvince;
     private String cCity;
@@ -17,12 +17,12 @@ public class Community {
     public Community() {
     }
 
-    public int getId() {
-        return id;
+    public int getcId() {
+        return cId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setcId(int cId) {
+        this.cId = cId;
     }
 
     public String getcName() {
@@ -68,7 +68,7 @@ public class Community {
     @Override
     public String toString() {
         return "Community{" +
-                "id=" + id +
+                "id=" + cId +
                 ", cName='" + cName + '\'' +
                 ", cProvince='" + cProvince + '\'' +
                 ", cCity='" + cCity + '\'' +

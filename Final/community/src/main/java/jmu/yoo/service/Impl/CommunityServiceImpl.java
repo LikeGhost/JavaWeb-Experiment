@@ -27,5 +27,18 @@ public class CommunityServiceImpl implements CommunityService {
         return dao.insertCommunity(community);
     }
 
+    @Override
+    public Community findCommunityBycId(Integer cId) {
+        return dao.selectCommunityBycId(cId);
+    }
 
+    @Override
+    public int changeCommunity(Community community) {
+        return dao.updateCommunity(community);
+    }
+
+    @Override
+    public int deleteCommunity(Community community) {
+        return dao.deleteCommunity(community);
+    }
 }
