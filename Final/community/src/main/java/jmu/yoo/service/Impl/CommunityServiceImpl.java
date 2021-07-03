@@ -12,7 +12,7 @@ import javax.annotation.Resource;
 import javax.servlet.ServletContext;
 import java.util.List;
 
-@Service()
+@Service
 public class CommunityServiceImpl implements CommunityService {
     @Resource(name="communityDAO")
     private CommunityDAO dao;

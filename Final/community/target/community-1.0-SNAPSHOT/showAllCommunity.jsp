@@ -28,7 +28,7 @@
     <tbody>
     <c:forEach var="community" items="${communityList}">
         <tr>
-            <td><a href="${pageContext.request.contextPath}/member/showAllMember.do?cId=${community.cId}">${community.cName}<a></td>
+            <td><a href="${pageContext.request.contextPath}/member/showAllMemberBycId.do?cId=${community.cId}" target="_blank">${community.cName}<a></td>
             <td>${community.cProvince}</td>
             <td>${community.cCity}</td>
             <td>${community.cStreet}</td>
