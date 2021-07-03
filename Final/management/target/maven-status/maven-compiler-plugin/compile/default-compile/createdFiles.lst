@@ -1,0 +1,15 @@
+jmu\yoo\vo\Community.class
+jmu\yoo\service\Impl\CommunityServiceImpl.class
+jmu\yoo\service\RecordService.class
+jmu\yoo\vo\Record.class
+jmu\yoo\service\Impl\MemberServiceImpl.class
+jmu\yoo\mapper\MemberDAO.class
+jmu\yoo\service\CommunityService.class
+jmu\yoo\controller\CommunityController.class
+jmu\yoo\service\MemberService.class
+jmu\yoo\controller\MemberController.class
+jmu\yoo\vo\Member.class
+jmu\yoo\controller\RecordController.class
+jmu\yoo\mapper\CommunityDAO.class
+jmu\yoo\mapper\RecordDAO.class
+jmu\yoo\service\Impl\RecordServiceImpl.class
