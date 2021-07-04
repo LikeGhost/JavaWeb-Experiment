@@ -8,7 +8,8 @@ import java.util.List;
 public interface MemberService {
     List<Member> showAllMemberBycId(Integer cId);
     int addMember(Member member);
-//    Community findCommunityBycId(Integer cId);
-//    int changeCommunity(Community community);
+    List<Member> findMemberByMName(String mName);
+    Member findMemberByMId(Integer mId);
+    int changeMember(Member member);
 //    int deleteCommunity(Community community);
 }

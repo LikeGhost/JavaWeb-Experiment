@@ -9,6 +9,16 @@
     </select>
 
     <insert id="insertMember" parameterType="jmu.yoo.vo.Member" >
-        insert into members(mName,mPhone,mSex,mAge,mHouseNumber,mWorkUnit,mCarNumber,mIsHousehold,cId)value ( #{mName},#{mPhone},#{mSex},#{mAge},#{mHouseNumber},#{mWorkUnit},#{mCarNumber},#{mIsHousehold},#{cId});
+        insert into members(mName,mPhone,mSex,mAge,mHouseNumber,mWorkUnit,mCarNumber,mIsHousehold,cId)values ( #{mName},#{mPhone},#{mSex},#{mAge},#{mHouseNumber},#{mWorkUnit},#{mCarNumber},#{mIsHousehold},#{cId});
     </insert>
+    <select id="selectMemberByMName" parameterType="java.lang.String" resultType="jmu.yoo.vo.Member">
+        select mId,mName,mPhone,mSex,mAge,mHouseNumber,mWorkUnit,mCarNumber,mIsHousehold,cId from members where mName=#{mName};
+    </select>
+
+    <select id="selectMemberByMId" resultType="jmu.yoo.vo.Member">
+        select mId,mName,mPhone,mSex,mAge,mHouseNumber,mWorkUnit,mCarNumber,mIsHousehold,cId from members where mId=#{mId};
+    </select>
+    <update id="updateMember" parameterType="jmu.yoo.vo.Member">
+        update members set mName=#{mName},mPhone=#{mPhone},mSex=#{mSex},mAge=#{mAge},mHouseNumber=#{mHouseNumber},mWorkUnit=#{mWorkUnit},mCarNumber=#{mCarNumber},mIsHousehold=#{mIsHousehold} where mId=#{mId};
+    </update>
 </mapper>

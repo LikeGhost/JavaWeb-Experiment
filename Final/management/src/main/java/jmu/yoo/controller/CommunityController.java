@@ -1,8 +1,8 @@
 package jmu.yoo.controller;
 
+import jdk.jshell.Snippet;
 import jmu.yoo.service.CommunityService;
 import jmu.yoo.vo.Community;
-import org.junit.runner.Request;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -40,7 +40,7 @@ public class CommunityController {
     public ModelAndView changeCommunity(Community community) {
         ModelAndView mv = new ModelAndView();
         service.changeCommunity(community);
-        mv.setViewName("showAllCommunity");
+        mv.setViewName("redirect:/community/showAllCommunity.do");
         return mv;
 
     }

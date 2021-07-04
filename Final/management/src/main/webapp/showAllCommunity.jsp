@@ -28,7 +28,6 @@
     <tbody>
     <c:forEach var="community" items="${communityList}">
         <tr>
-<%--            <td><a href="${pageContext.request.contextPath}/community/detailCommunity.do?cId=${community.cId}" target="_blank">${community.cName}</a></td>--%>
             <td><a href="/management/detailCommunity.jsp?cId=${community.cId}" target="_blank">${community.cName}</a></td>
             <td>${community.cProvince}</td>
             <td>${community.cCity}</td>

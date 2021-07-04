@@ -14,7 +14,7 @@
 <iframe style="width: 1500px;height: 600px" frameborder="0" name="actionFrame" src="${pageContext.request.contextPath}/community/showAllCommunity.do"></iframe>
 <div>
     <a href="${pageContext.request.contextPath}/community/showAllCommunity.do" target="actionFrame">查找所有社区记录</a>
-    <a href="/community/addCommunity.jsp" target="actionFrame">添加社区</a>
+    <a href="/management/addCommunity.jsp" target="actionFrame">添加社区</a>
 </div>
 
 

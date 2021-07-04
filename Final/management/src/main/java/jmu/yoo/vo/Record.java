@@ -3,13 +3,13 @@ package jmu.yoo.vo;
 
 public class Record {
 
-  private long rId;
-  private long mId;
-  private long cId;
-  private long rIsOutCity;
-  private long rIsFromForei;
-  private long rIsHosehold;
-  private java.sql.Timestamp rNowTime;
+  private int rId;
+  private int mId;
+  private int cId;
+  private int rIsOutCity;
+  private int rIsFromForei;
+  private int rIsHosehold;
+  private String rNowTime;
 
 
   public long getRId() {
@@ -17,7 +17,7 @@ public class Record {
   }
 
   public void setRId(long rId) {
-    this.rId = rId;
+    this.rId = (int) rId;
   }
 
 
@@ -26,7 +26,7 @@ public class Record {
   }
 
   public void setMId(long mId) {
-    this.mId = mId;
+    this.mId = (int) mId;
   }
 
 
@@ -35,7 +35,7 @@ public class Record {
   }
 
   public void setCId(long cId) {
-    this.cId = cId;
+    this.cId = (int) cId;
   }
 
 
@@ -44,7 +44,7 @@ public class Record {
   }
 
   public void setRIsOutCity(long rIsOutCity) {
-    this.rIsOutCity = rIsOutCity;
+    this.rIsOutCity = (int) rIsOutCity;
   }
 
 
@@ -53,7 +53,7 @@ public class Record {
   }
 
   public void setRIsFromForei(long rIsFromForei) {
-    this.rIsFromForei = rIsFromForei;
+    this.rIsFromForei = (int) rIsFromForei;
   }
 
 
@@ -62,15 +62,15 @@ public class Record {
   }
 
   public void setRIsHosehold(long rIsHosehold) {
-    this.rIsHosehold = rIsHosehold;
+    this.rIsHosehold = (int) rIsHosehold;
   }
 
 
-  public java.sql.Timestamp getRNowTime() {
+  public String getRNowTime() {
     return rNowTime;
   }
 
-  public void setRNowTime(java.sql.Timestamp rNowTime) {
+  public void setRNowTime(String rNowTime) {
     this.rNowTime = rNowTime;
   }
 

@@ -14,7 +14,6 @@
   <form action="${pageContext.request.contextPath}/community/changeCommunity.do" method="post">
     <table>
       <input type="hidden" name="cId" value="${community.cId}">
-      ${community.cId}
       <tr>
         <td>社区名称</td>
         <td><input type="text" name="cName" value="${community.cName}"></td>

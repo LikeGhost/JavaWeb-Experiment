@@ -23,4 +23,19 @@ public class MemberServiceImpl implements MemberService {
     public int addMember(Member member) {
         return dao.insertMember(member);
     }
+
+    @Override
+    public List<Member> findMemberByMName(String mName) {
+        return dao.selectMemberByMName(mName);
+    }
+
+    @Override
+    public Member findMemberByMId(Integer mId) {
+        return dao.selectMemberByMId(mId);
+    }
+
+    @Override
+    public int changeMember(Member member) {
+        return dao.updateMember(member);
+    }
 }

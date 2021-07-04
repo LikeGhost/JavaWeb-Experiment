@@ -18,14 +18,16 @@
 
     <thead>
     <tr>
-        <td>用户姓名</td>
-        <td>手机号</td>
-        <td>性别</td>
-        <td>年龄</td>
-        <td>楼号+房号</td>
-        <td>工作单位名称</td>
-        <td>车牌号</td>
-        <td>是否为业主</td>
+        <th>用户姓名</th>
+        <th>手机号</th>
+        <th>性别</th>
+        <th>年龄</th>
+        <th>楼号+房号</th>
+        <th>工作单位名称</th>
+        <th>车牌号</th>
+        <th>是否为业主</th>
+        <th>修改住户信息</th>
+        <th>删除住户信息</th>
     </tr>
     </thead>
     <tbody>
@@ -43,6 +45,7 @@
                 <c:if test="${member.MIsHousehold==1}" var="grade" scope="session">是</c:if>
                 <c:if test="${member.MIsHousehold==0}" var="grade" scope="session">否</c:if>
             </td>
+            <td><a href="${pageContext.request.contextPath}/member/preChangeMember.do?mId=${member.MId}">修改</a></td>
         </tr>
     </c:forEach>
     </tbody>

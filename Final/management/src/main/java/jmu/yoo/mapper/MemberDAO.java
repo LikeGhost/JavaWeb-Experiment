@@ -9,8 +9,9 @@ import java.util.List;
 public interface MemberDAO {
     List<Member> selectAllMemberByCId(Integer cId);
     int insertMember(Member member);
-//    Community selectCommunityBycId(Integer cId);
-//    int updateCommunity(Community community);
+    List<Member> selectMemberByMName(String mName);
+    Member selectMemberByMId(Integer mId);
+    int updateMember(Member member);
 //    int deleteCommunity(Community community);
 }
 

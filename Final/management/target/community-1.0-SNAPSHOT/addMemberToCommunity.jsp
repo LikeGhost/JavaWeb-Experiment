@@ -56,7 +56,7 @@
         <tbody>
 
     </table>
-    <input type="hidden" name="cId" value="${community.cId}">
+    <input type="hidden" name="cId" value="${param.cId}">
     <input type="submit" value="提交">
 </form>
 
