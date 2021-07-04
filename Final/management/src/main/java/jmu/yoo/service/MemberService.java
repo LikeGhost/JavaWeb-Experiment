@@ -11,5 +11,9 @@ public interface MemberService {
     List<Member> findMemberByMName(String mName);
     Member findMemberByMId(Integer mId);
     int changeMember(Member member);
+
+    int deleteMember(Integer mId);
+
+    int deleteMemberByCId(Integer cId);
 //    int deleteCommunity(Community community);
 }

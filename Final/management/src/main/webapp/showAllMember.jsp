@@ -42,10 +42,11 @@
             <td>${member.MWorkUnit}</td>
             <td>${member.MCarNumber}</td>
             <td>
-                <c:if test="${member.MIsHousehold==1}" var="grade" scope="session">是</c:if>
-                <c:if test="${member.MIsHousehold==0}" var="grade" scope="session">否</c:if>
+                <c:if test="${member.MIsHousehold==true}" var="grade" scope="session">是</c:if>
+                <c:if test="${member.MIsHousehold==false}" var="grade" scope="session">否</c:if>
             </td>
             <td><a href="${pageContext.request.contextPath}/member/preChangeMember.do?mId=${member.MId}">修改</a></td>
+            <td><a href="${pageContext.request.contextPath}/member/deleteMember.do?mId=${member.MId}&cId=${community.cId}">删除</a></td>
         </tr>
     </c:forEach>
     </tbody>

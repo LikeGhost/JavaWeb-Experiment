@@ -1,7 +1,8 @@
 package jmu.yoo.controller;
 
-import jdk.jshell.Snippet;
 import jmu.yoo.service.CommunityService;
+import jmu.yoo.service.MemberService;
+import jmu.yoo.service.RecordService;
 import jmu.yoo.vo.Community;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,14 +16,19 @@ import javax.annotation.Resource;
 public class CommunityController {
 
     @Resource(name = "communityServiceImpl")
-    private CommunityService service;
+    private CommunityService commService;
 
+    @Resource(name="memberServiceImpl")
+    private MemberService memService;
+
+    @Resource(name="recordServiceImpl")
+    private RecordService recService;
 
     @RequestMapping("/showAllCommunity.do")
     public ModelAndView showAllCommunity() {
 
         ModelAndView mv = new ModelAndView();
-        mv.addObject("communityList", service.showAllCommunity());
+        mv.addObject("communityList", commService.showAllCommunity());
         mv.setViewName("showAllCommunity");
         return mv;
     }
@@ -31,7 +37,7 @@ public class CommunityController {
     @RequestMapping("/addCommunity.do")
     public ModelAndView addCommunity(Community community) {
         ModelAndView mv = new ModelAndView();
-        service.addCommunity(community);
+        commService.addCommunity(community);
         mv.setViewName("redirect:/community/showAllCommunity.do");
         return mv;
     }
@@ -39,7 +45,7 @@ public class CommunityController {
     @RequestMapping("/changeCommunity.do")
     public ModelAndView changeCommunity(Community community) {
         ModelAndView mv = new ModelAndView();
-        service.changeCommunity(community);
+        commService.changeCommunity(community);
         mv.setViewName("redirect:/community/showAllCommunity.do");
         return mv;
 
@@ -48,7 +54,7 @@ public class CommunityController {
     @RequestMapping("findCommunity.do")
     public ModelAndView findCommunity(Integer cId, String status) {
         ModelAndView mv = new ModelAndView();
-        mv.addObject("community", service.findCommunityBycId(cId));
+        mv.addObject("community", commService.findCommunityBycId(cId));
         mv.setViewName(status);
         return mv;
     }
@@ -57,8 +63,10 @@ public class CommunityController {
     public ModelAndView deleteCommunity(Integer cId) {
         ModelAndView mv = new ModelAndView();
         Community community = new Community();
+        recService.deleteRecordByCId(cId);
+        memService.deleteMemberByCId(cId);
         community.setcId(cId);
-        service.deleteCommunity(community);
+        commService.deleteCommunity(community);
         mv.setViewName("redirect:/community/showAllCommunity.do");
         return mv;
     }

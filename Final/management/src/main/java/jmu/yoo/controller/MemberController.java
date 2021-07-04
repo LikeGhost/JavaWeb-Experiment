@@ -39,12 +39,12 @@ public class MemberController {
         return mv;
     }
     @RequestMapping("/findMemberByMName.do")
-    public ModelAndView findMemberByCName(String mName,Integer cId){
+    public ModelAndView findMemberByMName(String mName,Integer cId){
         ModelAndView mv=new ModelAndView();
         mv.addObject("memberList",memService.findMemberByMName(mName));
         mv.addObject("searchName",mName);
         mv.addObject("cId",cId);
-        mv.setViewName("findMember");
+        mv.setViewName("addRecordToCommunity");
         return mv;
     }
     @RequestMapping("/preChangeMember.do")
@@ -62,5 +62,16 @@ public class MemberController {
         mv.setViewName("redirect:/member/showAllMemberBycId.do?cId="+member.getCId());
         return mv;
     }
+
+
+    @RequestMapping("/deleteMember.do")
+    public ModelAndView deleteMember(Integer mId,Integer cId){
+        ModelAndView mv=new ModelAndView();
+        recService.deleteRecordByMId(mId);
+        memService.deleteMember(mId);
+        mv.setViewName("redirect:/member/showAllMemberBycId.do?cId="+cId);
+        return mv;
+    }
+
 
 }

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jmu.yoo.mapper.MemAndCommDAO">
+    <resultMap id="MemAndCommMap" type="jmu.yoo.vo.MemAndComm">
+        <association property="member" javaType="jmu.yoo.vo.Member">
+            <id property="mId" column="mId"/>
+            <result property="mName" column="mName"/>
+            <result property="mPhone" column="mPhone"/>
+            <result property="mSex" column="mSex"/>
+            <result property="mAge" column="mAge"/>
+            <result property="mHouseNumber" column="mHouseNumber"/>
+            <result property="mWorkUnit" column="mWorkUnit"/>
+            <result property="mCarNumber" column="mCarNumber"/>
+            <result property="mIsHousehold" column="mIsHousehold"/>
+        </association>
+        <collection property="communities" javaType="list" ofType="jmu.yoo.vo.Community">
+            <id property="cId" column="cId"/>
+            <result property="cName" column="cName"/>
+            <result property="cProvince" column="cProvince"/>
+            <result property="cCity" column="cCity"/>
+            <result property="cStreet" column="cStreet"/>
+            <result property="cTel" column="cTel"/>
+        </collection>
+    </resultMap>
+    <select id="selectMemAndCommIsOutCity" resultMap="MemAndCommMap">
+        select members.mId,mName,mPhone,mSex,mAge,mHouseNumber,mWorkUnit,mCarNumber,mIsHousehold,community.cId,cName,cProvince,cCity,cStreet,cTel
+        from members,community,record
+        where record.rIsOutCity=true and members.mId=record.mId and community.cId=record.cId;
+    </select>
+</mapper>

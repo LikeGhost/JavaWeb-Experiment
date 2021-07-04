@@ -59,11 +59,11 @@
         <td>是否为业主</td>
         <td><select name="mIsHousehold">
           <c:choose >
-            <c:when test="${member.MIsHousehold== 1}">
+            <c:when test="${member.MIsHousehold== true}">
               <option value="1">是</option>
               <option value="0">否</option>
             </c:when>
-            <c:when test="${member.MIsHousehold== 0}">
+            <c:when test="${member.MIsHousehold== false}">
               <option value="0">否</option>
               <option value="1">是</option>
             </c:when>

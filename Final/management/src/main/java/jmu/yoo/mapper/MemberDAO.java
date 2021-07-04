@@ -12,6 +12,7 @@ public interface MemberDAO {
     List<Member> selectMemberByMName(String mName);
     Member selectMemberByMId(Integer mId);
     int updateMember(Member member);
-//    int deleteCommunity(Community community);
+    int deleteMember(Integer mId);
+    int deleteMemberByCId(Integer cId);
 }
 

@@ -11,16 +11,16 @@ public class Member {
   private String mHouseNumber;
   private String mWorkUnit;
   private String mCarNumber;
-  private int mIsHousehold;
+  private boolean mIsHousehold;
   private int cId;
 
 
-  public long getMId() {
+  public int getMId() {
     return mId;
   }
 
-  public void setMId(long mId) {
-    this.mId = (int) mId;
+  public void setMId(int mId) {
+    this.mId =  mId;
   }
 
 
@@ -87,12 +87,12 @@ public class Member {
   }
 
 
-  public long getMIsHousehold() {
+  public boolean getMIsHousehold() {
     return mIsHousehold;
   }
 
-  public void setMIsHousehold(long mIsHousehold) {
-    this.mIsHousehold = (int) mIsHousehold;
+  public void setMIsHousehold(boolean mIsHousehold) {
+    this.mIsHousehold =  mIsHousehold;
   }
 
 

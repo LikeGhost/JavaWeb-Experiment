@@ -16,6 +16,8 @@
 <a href="${pageContext.request.contextPath}/community/findCommunity.do?cId=${param.cId}&status=findCommunity" target="actionFrame">查看社区详情</a>
 <a href="/management/addMemberToCommunity.jsp?cId=${param.cId}"  target="actionFrame">添加社区用户</a>
 <a href="${pageContext.request.contextPath}/member/showAllMemberBycId.do?cId=${param.cId}" target="actionFrame">显示社区所有成员</a>
-<a href="/management/findMember.jsp?cId=${param.cId}" target="actionFrame">添加通行记录</a>
+<a href="/management/addRecordToCommunity.jsp?cId=${param.cId}" target="actionFrame">添加通行记录</a>
+<a href="${pageContext.request.contextPath}/record/preShowAllRecordByCId.do?cId=${param.cId}" target="actionFrame">显示所有通行记录</a>
+
 </body>
 </html>

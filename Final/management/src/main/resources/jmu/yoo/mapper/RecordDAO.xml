@@ -7,4 +7,22 @@
     <insert id="insertRecord" parameterType="jmu.yoo.vo.Record">
         insert into record(mId,cId,rIsOutCity,rIsFromForei,rIsHosehold,rNowTime)values(#{mId},#{cId},#{rIsOutCity},#{rIsFromForei},#{rIsHosehold},#{rNowTime});
     </insert>
+    <select id="selectAllRecordByCId" resultType="map">
+        select rId,record.mId,record.cId,members.cId as mCId,rIsOutCity,rIsFromForei,rIsHosehold,DATE_FORMAT(rNowTime,'%Y-%m-%dT%H:%i') as rNowTime,mName,mPhone,mSex,mAge,mHouseNumber,mWorkUnit,mCarNumber,mIsHousehold from record,members where record.cId=#{cId} and record.mId=members.mId;
+    </select>
+    <select id="selectAllRecordByMNameAndCId" resultType="map">
+        select rId,record.mId,record.cId,members.cId as mCId,rIsOutCity,rIsFromForei,rIsHosehold,DATE_FORMAT(rNowTime,'%Y-%m-%dT%H:%i') as rNowTime,mName,mPhone,mSex,mAge,mHouseNumber,mWorkUnit,mCarNumber,mIsHousehold from record,members where record.mId=members.mId and members.mName=#{mName} and record.cId=#{cId};
+    </select>
+    <update id="updateRecord" parameterType="jmu.yoo.vo.Record">
+        update record set mId=#{mId},cId=#{cId},rIsOutCity=#{rIsOutCity},rIsFromForei=#{rIsFromForei},rIsHosehold=#{rIsHosehold},rNowTime=#{rNowTime} where rId=#{rId};
+    </update>
+    <delete id="deleteRecord" parameterType="int">
+        delete from record where rId=#{rId};
+    </delete>
+    <delete id="deleteRecordByMId" parameterType="int">
+        delete from record where mId=#{mId};
+    </delete>
+    <delete id="deleteRecordByCId" parameterType="int">
+        delete from record where cId=#{cId};
+    </delete>
 </mapper>

@@ -6,9 +6,9 @@ public class Record {
   private int rId;
   private int mId;
   private int cId;
-  private int rIsOutCity;
-  private int rIsFromForei;
-  private int rIsHosehold;
+  private boolean rIsOutCity;
+  private boolean rIsFromForei;
+  private boolean rIsHosehold;
   private String rNowTime;
 
 
@@ -39,30 +39,30 @@ public class Record {
   }
 
 
-  public long getRIsOutCity() {
+  public boolean getRIsOutCity() {
     return rIsOutCity;
   }
 
-  public void setRIsOutCity(long rIsOutCity) {
-    this.rIsOutCity = (int) rIsOutCity;
+  public void setRIsOutCity(boolean rIsOutCity) {
+    this.rIsOutCity = rIsOutCity;
   }
 
 
-  public long getRIsFromForei() {
+  public boolean getRIsFromForei() {
     return rIsFromForei;
   }
 
-  public void setRIsFromForei(long rIsFromForei) {
-    this.rIsFromForei = (int) rIsFromForei;
+  public void setRIsFromForei(boolean rIsFromForei) {
+    this.rIsFromForei = rIsFromForei;
   }
 
 
-  public long getRIsHosehold() {
+  public boolean getRIsHosehold() {
     return rIsHosehold;
   }
 
-  public void setRIsHosehold(long rIsHosehold) {
-    this.rIsHosehold = (int) rIsHosehold;
+  public void setRIsHosehold(boolean rIsHosehold) {
+    this.rIsHosehold =  rIsHosehold;
   }
 
 

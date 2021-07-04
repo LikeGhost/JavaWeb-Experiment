@@ -15,6 +15,7 @@
 <div>
     <a href="${pageContext.request.contextPath}/community/showAllCommunity.do" target="actionFrame">查找所有社区记录</a>
     <a href="/management/addCommunity.jsp" target="actionFrame">添加社区</a>
+    <a href="${pageContext.request.contextPath}/memAndComm/findMemAndCommIsOutCity.do" target="actionFrame">查询一周内离开本城的用户</a>
 </div>
 
 

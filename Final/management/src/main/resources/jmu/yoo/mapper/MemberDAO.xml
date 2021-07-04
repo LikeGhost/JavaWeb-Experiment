@@ -21,4 +21,11 @@
     <update id="updateMember" parameterType="jmu.yoo.vo.Member">
         update members set mName=#{mName},mPhone=#{mPhone},mSex=#{mSex},mAge=#{mAge},mHouseNumber=#{mHouseNumber},mWorkUnit=#{mWorkUnit},mCarNumber=#{mCarNumber},mIsHousehold=#{mIsHousehold} where mId=#{mId};
     </update>
+
+    <delete id="deleteMember" parameterType="int">
+        delete from members where mId=#{mId};
+    </delete>
+    <delete id="deleteMemberByCId" parameterType="int">
+        delete from members where cId=#{cId};
+    </delete>
 </mapper>

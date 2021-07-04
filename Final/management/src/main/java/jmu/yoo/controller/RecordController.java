@@ -1,6 +1,5 @@
 package jmu.yoo.controller;
 
-import jmu.yoo.mapper.MemberDAO;
 import jmu.yoo.service.CommunityService;
 import jmu.yoo.service.MemberService;
 import jmu.yoo.service.RecordService;
@@ -20,11 +19,47 @@ public class RecordController {
     private MemberService memService;
     @Resource(name="recordServiceImpl")
     private RecordService recService;
-    @RequestMapping("/addRecordToCommunity")
+    @RequestMapping("/addRecordToCommunity.do")
     public ModelAndView addRecordToCommunity(Record record){
         ModelAndView mv=new ModelAndView();
         recService.addRecord(record);
         mv.setViewName("redirect:/community/findCommunity.do?cId="+record.getCId()+"&status=findCommunity");
         return mv;
     }
+
+    @RequestMapping("/preShowAllRecordByCId.do")
+    public ModelAndView preShowAllRecordByCId(Integer cId){
+        ModelAndView mv=new ModelAndView();
+        mv.addObject("recordList",recService.showAllRecordByCId(cId));
+        mv.addObject("cId",cId);
+        mv.setViewName("showAllRecord");
+        return mv;
+    }
+
+    @RequestMapping("/findRecordByMNameAndCId.do")
+    public ModelAndView findRecordByMNameAndCId(String mName,Integer cId){
+        ModelAndView mv=new ModelAndView();
+        mv.addObject("recordList",recService.showAllRecordByMNameAndCId(mName,cId));
+        mv.addObject("searchName",mName);
+        mv.addObject("cId",cId);
+        mv.setViewName("showAllRecord");
+        return mv;
+    }
+
+    @RequestMapping("/changRecord.do")
+    public ModelAndView changRecordByRId(Record record){
+        ModelAndView mv=new ModelAndView();
+        recService.changeRecord(record);
+        mv.setViewName("redirect:/record/preShowAllRecordByCId.do?cId="+record.getCId());
+        return mv;
+    }
+    @RequestMapping("/deleteRecord.do")
+    public ModelAndView deleteRecord(Integer rId,Integer cId){
+        ModelAndView mv=new ModelAndView();
+
+        recService.deleteRecord(rId);
+        mv.setViewName("redirect:/record/preShowAllRecordByCId.do?cId="+cId);
+        return mv;
+    }
+
 }
