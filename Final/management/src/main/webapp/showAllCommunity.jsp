@@ -33,6 +33,9 @@
             <td>${community.cCity}</td>
             <td>${community.cStreet}</td>
             <td>${community.cTel}</td>
+            <td><a href="${pageContext.request.contextPath}/community/findCommunity.do?cId=${community.cId}&status=changeCommunity">修改</a> </td>
+            <td><a href="${pageContext.request.contextPath}/community/deleteCommunity.do?cId=${community.cId}">删除</a> </td>
+
         </tr>
     </c:forEach>
     </tbody>
