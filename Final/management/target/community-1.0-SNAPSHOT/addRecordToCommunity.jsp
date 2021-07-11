@@ -53,7 +53,6 @@
                     <td>${member.MWorkUnit}</td>
                     <td>${member.MCarNumber}</td>
                     <td>
-
                         <c:if test="${member.CId==cId and member.MIsHousehold==true}">
                             是
                             <input type="hidden" name="rIsHosehold" value="1">
@@ -62,12 +61,6 @@
                             否
                             <input type="hidden" name="rIsHosehold" value="0">
                         </c:if>
-<%--                        <c:if test="${member.CId==cId and member.MIsHousehold==true}">--%>
-<%--                           --%>
-<%--                        </c:if>--%>
-<%--                        <c:if test="${member.CId!=cId or member.MIsHousehold!=true}">--%>
-<%--                            --%>
-<%--                        </c:if>--%>
                     </td>
 
 
